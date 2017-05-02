@@ -4,12 +4,13 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <dirent.h>
 
 //160*3=480
 #define MAXSIZE 480
 int main(int argc, char *argv[]) {
-    //1-identical,2-similar,3-different
-    char* buffer[MAXSIZE], mainFolder, inputFile, outputFile;
+    char buffer[MAXSIZE], *mainFolder, *inputFile, *outputFile;
+    DIR *currentFolder;
     char error[] = "Error! System call failed.";
     const char s[2] = "\n";
     int readSize;
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     //receive and save the information
-    readSize = read(fd1, buffer, SIZE);
+    readSize = read(fd, buffer, MAXSIZE);
     if(readSize<0){
         write(2,error,strlen(error));
         return -1;
@@ -28,4 +29,10 @@ int main(int argc, char *argv[]) {
     inputFile = strtok(NULL,s);
     outputFile = strtok(NULL,s);
 
+    currentFolder = opendir(mainFolder);
+    while(currentFolder){
+        //do something
+        //return to main folder
+        currentFolder = opendir(mainFolder);
+    }
 }
