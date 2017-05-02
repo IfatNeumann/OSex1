@@ -5,6 +5,11 @@
 #include <sys/stat.h>
 
 #define SIZE 10
+int checkIdentical(int fd1, int fd2,int* read1, int* read2, char* buffer1,char* buffer2, int* index);
+int compareBuffers(char* buffer1,char* buffer2, int length);
+int checkSimilar(int fd1, int fd2,int* read1, int* read2, char* buffer1,char* buffer2, int* index);
+int checkIfSpaces(int* readSize,int fd, char* buffer, int index);
+
 int main(int argc, char *argv[]) {
     //1-identical,2-similar,3-different
     char buffer1[SIZE], buffer2[SIZE];
