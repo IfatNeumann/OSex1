@@ -14,7 +14,7 @@ int checkIfSpaces(int* readSize,int fd, char* buffer, int index);
 int main(int argc, char *argv[]) {
     //1-identical,2-similar,3-different
     char buffer1[SIZE], buffer2[SIZE];
-    char error[] = "Error!,System call failed.";
+    char error[] = "Error! System call failed.";
     int read1,read2,index, result;
     int fd1 = open(argv[1], O_RDONLY, S_IREAD);
     int fd2 = open(argv[2], O_RDONLY, S_IREAD);
